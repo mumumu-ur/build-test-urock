@@ -19,7 +19,7 @@ function initializeInputFields() {
     if ($el.type === 'search') base = 'input-search';
     else if ($el.tagName.toLowerCase() === 'textarea') base = 'input-memo';
     else if ($el.tagName.toLowerCase() === 'select') base = 'input-dropdown';
-    
+
 
 
     // 에러 메시지 요소 생성 (기존 것이 없을 때만)
@@ -42,13 +42,13 @@ function initializeInputFields() {
       $wrap.appendChild(clearBtn);
 
       // 클릭 이벤트 - 개선된 버전
-      clearBtn.addEventListener('click', function(e) {
+      clearBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // 입력 내용 삭제
         $el.value = '';
-        
+
         // 입력 이벤트 트리거 (다른 스크립트에서 감지할 수 있도록)
         const inputEvent = new Event('input', { bubbles: true });
         $el.dispatchEvent(inputEvent);
@@ -57,32 +57,19 @@ function initializeInputFields() {
 
         // 포커스 유지
         $el.focus();
-        
-        // 상태 업데이트
-        $wrap.classList.remove('input-has-value');
-        clearBtn.style.display = 'none';
+
+        // 상태 업데이트 (CSS가 자동으로 클린 버튼 숨김 처리)
         hideError();
         setState('focus');
 
       });
 
       // 마우스 이벤트 처리
-      clearBtn.addEventListener('mousedown', function(e) {
+      clearBtn.addEventListener('mousedown', function (e) {
         e.preventDefault();
       });
 
-      // 호버 효과 개선
-      clearBtn.addEventListener('mouseenter', function() {
-        if ($wrap.classList.contains('input-has-value')) {
-          clearBtn.style.display = 'block';
-        }
-      });
-
-      clearBtn.addEventListener('mouseleave', function() {
-        if (!$el.matches(':focus') && !$el.value.trim()) {
-          clearBtn.style.display = 'none';
-        }
-      });
+      // 호버 효과는 CSS :not(:placeholder-shown)가 자동 처리
     }
 
     // 유효성 검사 함수들
@@ -164,34 +151,25 @@ function initializeInputFields() {
     function checkDisable() {
       if ($el.disabled) {
         setState('disable');
-        if (clearBtn) clearBtn.style.display = 'none';
-        $wrap.classList.remove('input-has-value');
+        // disabled 상태에서는 CSS가 자동으로 클린 버튼 숨김 처리
         return true;
       }
       return false;
     }
 
-    // filled 상태 - 개선된 X 버튼 표시 로직
+    // filled 상태 - 간소화된 로직
     function checkFilled() {
       const hasValue = $el.value && $el.value.trim().length > 0;
-      const isFocused = $el.matches(':focus');
-      
+
       if (hasValue) {
         setState('filled');
-        $wrap.classList.add('input-has-value');
-        
-        // X 버튼 표시 조건: 값이 있고 (포커스 상태이거나 호버 상태)
-        if (clearBtn) {
-          if (isFocused) {
-            clearBtn.style.display = 'block';
-          } else {
-            clearBtn.style.display = 'none';
-          }
+        // CSS :not(:placeholder-shown)가 자동 처리하므로 클래스 조작 최소화
+        if (!$el.placeholder || $el.value !== $el.placeholder) {
+          $wrap.classList.add('input-has-value');
         }
         return true;
       } else {
         $wrap.classList.remove('input-has-value');
-        if (clearBtn) clearBtn.style.display = 'none';
       }
       return false;
     }
@@ -199,8 +177,7 @@ function initializeInputFields() {
     // default 상태
     function setDefault() {
       setState('default');
-      $wrap.classList.remove('input-has-value');
-      if (clearBtn) clearBtn.style.display = 'none';
+      // CSS :not(:placeholder-shown)가 자동 처리하므로 클래스 조작 불필요
     }
 
     // hover
@@ -219,36 +196,28 @@ function initializeInputFields() {
       }
     });
 
-    // focus/blur - 개선된 X 버튼 처리
+    // focus/blur - 간소화된 처리
     $el.addEventListener('focus', function () {
       if (checkDisable()) return;
       setState('focus');
-      
-      // 포커스 시 값이 있으면 X 버튼 표시
-      if ($el.value && $el.value.trim().length > 0) {
-        $wrap.classList.add('input-has-value');
-        if (clearBtn) clearBtn.style.display = 'block';
-      }
-      
       checkFilled();
     });
-    
+
     $el.addEventListener('blur', function () {
       if (checkDisable()) return;
-      
+
       // 값이 있을 때만 유효성 검사 실행
       if ($el.value.trim()) {
         validateInput();
       } else {
         hideError();
       }
-      
-      // 블러 시 X 버튼 숨기기 (단, 호버 상태가 아닐 때만)
+
+      // 블러 시 상태만 업데이트
       setTimeout(() => {
         if (clearBtn && !clearBtn.matches(':hover')) {
           if (checkFilled()) {
             setState('filled');
-            clearBtn.style.display = 'none';
           } else {
             setDefault();
           }
@@ -256,28 +225,21 @@ function initializeInputFields() {
       }, 100);
     });
 
-    // typing - 개선된 실시간 X 버튼 표시
+    // typing - 간소화된 실시간 처리 (CSS가 자동 처리)
     $el.addEventListener('input', function () {
       if (checkDisable()) return;
-      
+
       const hasValue = $el.value && $el.value.trim().length > 0;
-      const isFocused = $el.matches(':focus');
-      
+
       // 타이핑 중에는 에러 메시지 숨기기
       hideError();
-      
+
+      // 상태만 변경 (클린 버튼은 CSS가 자동 처리)
       if (hasValue) {
         setState('typing');
-        $wrap.classList.add('input-has-value');
-        
-        // 입력 중이고 포커스 상태일 때만 X 버튼 표시
-        if (clearBtn && isFocused) {
-          clearBtn.style.display = 'block';
-        }
       } else {
         setState('focus');
-        $wrap.classList.remove('input-has-value');
-        if (clearBtn) clearBtn.style.display = 'none';
+        $wrap.classList.remove('input-has-value'); // 빈 값일 때만 클래스 제거
       }
     });
     $el.addEventListener('change', function () {
@@ -337,7 +299,7 @@ document.addEventListener('allComponentsLoaded', () => {
 function setupDOMObserver() {
   const observer = new MutationObserver((mutations) => {
     let shouldReinitialize = false;
-    
+
     mutations.forEach((mutation) => {
       // 새로 추가된 노드 검사
       mutation.addedNodes.forEach((node) => {
@@ -347,14 +309,14 @@ function setupDOMObserver() {
             node.querySelector('input[type="text"], input[type="email"], input[type="tel"], textarea') ||
             node.matches('input[type="text"], input[type="email"], input[type="tel"], textarea')
           );
-          
+
           if (hasInputs) {
             shouldReinitialize = true;
           }
         }
       });
     });
-    
+
     // 디바운싱으로 중복 실행 방지
     if (shouldReinitialize) {
       clearTimeout(window.inputReinitTimeout);
@@ -363,13 +325,13 @@ function setupDOMObserver() {
       }, 100);
     }
   });
-  
+
   // body 전체를 관찰하되, 하위 요소 추가만 감지
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
-  
+
 
 }
 
@@ -377,7 +339,7 @@ function setupDOMObserver() {
 function validateForm(formElement) {
   const inputs = formElement.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
   let isValid = true;
-  
+
   inputs.forEach(input => {
     const wrapper = input.closest('.input');
     if (wrapper) {
@@ -386,7 +348,7 @@ function validateForm(formElement) {
       if (errorMessage && input.value.trim()) {
         // blur 이벤트 트리거하여 개별 유효성 검사 실행
         input.dispatchEvent(new FocusEvent('blur'));
-        
+
         // 에러 메시지가 표시되어 있으면 유효하지 않음
         if (errorMessage.classList.contains('show')) {
           isValid = false;
@@ -394,7 +356,7 @@ function validateForm(formElement) {
       }
     }
   });
-  
+
   return isValid;
 }
 
