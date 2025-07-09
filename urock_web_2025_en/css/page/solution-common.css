@@ -1,0 +1,17 @@
+.intro {
+  background-image: url(images/solution/bg-top.webp);
+}
+
+.line-split {
+  display: inline;
+}
+
+@media screen and (max-width: 360px) {
+  .line-split {
+    display: block;
+  }
+
+  .text-color-blue {
+    color: #628cf5;
+  }
+}
