@@ -5,7 +5,6 @@ import { createHtmlPlugin } from "vite-plugin-html";
 export default defineConfig(({ command, mode }) => {
   const isDev = mode === "development";
   return {
-    base: isDev ? "./" : "/urock.kr/",
     publicDir: "public",
     plugins: [
       createHtmlPlugin({
