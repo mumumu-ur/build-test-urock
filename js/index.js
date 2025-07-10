@@ -60,3 +60,4 @@ import "./page/support.js";
 /* 지원 페이지들은 ./page/solution.js에서 통합 관리됨 */
 
 /* 개별 관리 */
+import "./global/i18n.js";
