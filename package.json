@@ -1,0 +1,27 @@
+{
+  "name": "urock_web_2025",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/start-j/urock_web_2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/start-j/urock_web_2025/issues"
+  },
+  "homepage": "https://github.com/start-j/urock_web_2025#readme",
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^7.0.0",
+    "glob": "^11.0.3",
+    "vite": "^7.0.0",
+    "vite-plugin-html": "^3.2.2"
+  }
+}
