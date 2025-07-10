@@ -2,6 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import { createHtmlPlugin } from "vite-plugin-html";
 import i18nextLoader from "vite-plugin-i18next-loader";
+import injectHTML from "vite-plugin-html-inject";
 
 export default defineConfig(({ command, mode }) => {
   const isDev = mode === "development";
@@ -11,6 +12,7 @@ export default defineConfig(({ command, mode }) => {
       createHtmlPlugin({
         minify: true,
       }),
+      injectHTML(),
       i18nextLoader({
         localesDirs: ["locales"],
         logBuild: true,
