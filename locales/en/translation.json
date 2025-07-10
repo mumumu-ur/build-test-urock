@@ -90,6 +90,43 @@
   },
   "company": {
     "title": "Company Introduction",
-    "description": "Creating new value through the harmony of people and technology"
+    "description": "Creating new value through the harmony of people and technology",
+    "business": {
+      "description": "As a global ICT company based on digital forensics, we will create a safe cyber world through continuous research and development of digital forensics solutions, growing together with domestic and foreign customers and partners.",
+      "title": "Business Areas",
+      "card1": {
+        "title": "Solution R&D",
+        "item1": "Mobile data deletion solution R&D",
+        "item2": "Digital forensics solution R&D",
+        "item3": "Illegal recording detection R&D"
+      },
+      "card2": {
+        "title": "Digital Forensics Consulting/Analysis Service",
+        "item1": "Domestic/foreign digital forensics solution provision",
+        "item2": "Digital forensics analysis/diagnosis service"
+      },
+      "card3": {
+        "title": "Information Protection Consulting",
+        "item1": "Information audit tailored to corporate environment (outsourcing, consignment, partners, etc.)",
+        "item2": "Incident diagnosis and response consulting"
+      },
+      "card4": {
+        "title": "Information Security Education",
+        "item1": "Customized information security education for companies",
+        "item2": "Digital forensics certification education",
+        "item3": "Digital forensics solution utilization education"
+      }
+    },
+    "history": {
+      "title": "History"
+    },
+    "partner": {
+      "title": "Partners"
+    },
+    "location": {
+      "title": "Location",
+      "address": "815 Daewangpangyo-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do, 4F Information Protection Cluster 467 · Enterprise Support Hub B102",
+      "button": "Inquire About Solutions"
+    }
   }
 }
