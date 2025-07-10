@@ -79,8 +79,6 @@ function initCompanyAnimations() {
     window.location.pathname.includes("intro") ||
     window.location.pathname.includes("company")
   ) {
-    console.log("[Intro] 회사소개 페이지 애니메이션 초기화");
-
     // 애니메이션 효과
     const sections = document.querySelectorAll(".intro-section");
 
@@ -138,19 +136,15 @@ function initCompanyAnimations() {
         updateCounter();
       }
     });
-
-    console.log("[Intro] 회사소개 페이지 애니메이션 초기화 완료");
   }
 }
 
 function runIntroComponent() {
-  console.log("[Intro] 컴포넌트 실행 중...");
-
   // 타이틀과 설명 자동 삽입
   document.querySelectorAll(".txt-group").forEach((el) => {
     const title = el.dataset.title;
     const desc = el.dataset.desc;
-    console.log(`[Intro] 데이터 속성: title=${title}, desc=${desc}`);
+
     if (title) el.querySelector(".tit").textContent = title;
     if (desc) el.querySelector(".des").textContent = desc;
   });
@@ -161,9 +155,6 @@ function runIntroComponent() {
   const breadcrumbKeyDiv = document.getElementById("breadcrumb-key");
   if (breadcrumbKeyDiv && breadcrumbKeyDiv.dataset.key) {
     customBreadcrumbKey = breadcrumbKeyDiv.dataset.key;
-    console.log(
-      `[Intro] 상세페이지 breadcrumb-key 감지: ${customBreadcrumbKey}`
-    );
   }
 
   const currentPath = location.pathname;
@@ -174,47 +165,31 @@ function runIntroComponent() {
   // 1순위: 상세페이지 breadcrumb-key
   if (customBreadcrumbKey && breadcrumbMap[customBreadcrumbKey]) {
     breadcrumbData = breadcrumbMap[customBreadcrumbKey];
-    console.log(
-      `[Intro] 상세페이지 breadcrumb-key로 breadcrumb 데이터 찾음: ${breadcrumbData}`
-    );
   } else if (breadcrumbMap[currentPath]) {
     // 2순위: 전체 경로
     breadcrumbData = breadcrumbMap[currentPath];
-    console.log(
-      `[Intro] 전체 경로로 breadcrumb 데이터 찾음: ${breadcrumbData}`
-    );
   } else {
     // 3순위: 파일명 매칭
     for (const path in breadcrumbMap) {
       const pathFileName = getPageFileName(path);
       if (pathFileName === currentFileName) {
         breadcrumbData = breadcrumbMap[path];
-        console.log(
-          `[Intro] 파일명으로 breadcrumb 데이터 찾음: ${breadcrumbData} (경로: ${path})`
-        );
+
         break;
       } else if (currentPath.includes(pathFileName)) {
         breadcrumbData = breadcrumbMap[path];
-        console.log(
-          `[Intro] URL 포함 방식으로 breadcrumb 데이터 찾음: ${breadcrumbData} (경로: ${path})`
-        );
+
         break;
       }
     }
     if (!breadcrumbData && breadcrumbMap[currentFileName]) {
       breadcrumbData = breadcrumbMap[currentFileName];
-      console.log(
-        `[Intro] 파일명 직접 매핑으로 breadcrumb 데이터 찾음: ${breadcrumbData}`
-      );
     }
   }
 
   const $breadcrumb = document.querySelector(".breadcrumb .breadcrumb-item");
 
   if ($breadcrumb && Array.isArray(breadcrumbData) && breadcrumbData.length) {
-    console.log(
-      `[Intro] breadcrumb 생성 시작: ${JSON.stringify(breadcrumbData)}`
-    );
     $breadcrumb.innerHTML = ""; // 기존 내용 초기화
 
     // 각 breadcrumb 항목 생성 및 추가
@@ -246,28 +221,12 @@ function runIntroComponent() {
     });
 
     // CSS에서 fit-content로 처리하므로 JavaScript에서 너비 계산 제거
-    console.log("[Intro] breadcrumb 생성 완료");
   } else {
-    console.warn(
-      `[Intro] 오류: breadcrumb 데이터를 찾지 못했거나 요소가 없습니다. 경로: ${currentPath}, 파일: ${currentFileName}`
-    );
-    if (!$breadcrumb) {
-      console.warn(
-        "[Intro] 오류: breadcrumb 요소(.breadcrumb .breadcrumb-item)를 찾을 수 없습니다"
-      );
-    } else if (!breadcrumbData) {
-      console.warn(
-        "[Intro] 오류: URL에 맞는 breadcrumb 데이터를 찾을 수 없습니다."
-      );
-      // 디버깅을 위한 경로 출력
-      console.log("[Intro] 사용 가능한 경로 키:", Object.keys(breadcrumbMap));
-    }
   }
 }
 
 // 문서 로드 완료 후 실행
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded 이벤트 발생");
   initIntroComponent();
   // 회사소개 페이지 애니메이션 초기화
   initCompanyAnimations();
@@ -279,11 +238,10 @@ function initIntroComponent() {
   const breadcrumbItem = document.querySelector(".breadcrumb .breadcrumb-item");
 
   if (breadcrumbItem) {
-    console.log("breadcrumb 요소 찾음, 컴포넌트 초기화");
     runIntroComponent();
   } else {
     // include.js가 요소를 추가할 때까지 대기
-    console.log("breadcrumb 요소 대기 중... polling 시작");
+
     waitForIntroComponent();
   }
 }
@@ -292,10 +250,8 @@ function initIntroComponent() {
 function waitForIntroComponent() {
   const breadcrumbItem = document.querySelector(".breadcrumb .breadcrumb-item");
   if (breadcrumbItem) {
-    console.log("breadcrumb 요소 발견, 컴포넌트 실행");
     runIntroComponent();
   } else {
-    console.log("breadcrumb 요소 로딩 대기 중...");
     setTimeout(waitForIntroComponent, 100);
   }
 }

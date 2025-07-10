@@ -74,7 +74,6 @@ window.ComponentManager = {
     // 언어 툴팁 컴포넌트 추가
     "language-tooltip": {
       init: function () {
-        console.log("[ComponentManager] 언어 툴팁 초기화");
         // 언어 드롭다운 초기화가 아직 안 된 경우에만 실행
         if (
           !window.languageDropdownInitialized &&
@@ -90,7 +89,7 @@ window.ComponentManager = {
   // 컴포넌트 등록 메서드
   register: function (name, initFunction) {
     this.registry[name] = { init: initFunction };
-    console.log(`[ComponentManager] 컴포넌트 등록: ${name}`);
+
     return this;
   },
 
@@ -101,13 +100,10 @@ window.ComponentManager = {
       return;
     }
 
-    console.log(`[ComponentManager] 컴포넌트 초기화 시도: ${componentName}`);
-
     // 컴포넌트가 등록되어 있는지 확인
     const component = this.registry[componentName];
 
     if (component && typeof component.init === "function") {
-      console.log(`[ComponentManager] 컴포넌트 초기화 실행: ${componentName}`);
       try {
         component.init(element);
       } catch (error) {
@@ -125,13 +121,10 @@ window.ComponentManager = {
 
   // 모든 컴포넌트 초기화
   initAll: function () {
-    console.log("[ComponentManager] 모든 컴포넌트 초기화 시작");
-
     for (const [name, component] of Object.entries(this.registry)) {
       if (component && typeof component.init === "function") {
         try {
           component.init();
-          console.log(`[ComponentManager] 컴포넌트 초기화 성공: ${name}`);
         } catch (error) {
           console.error(
             `[ComponentManager] 컴포넌트 초기화 오류 (${name}):`,
@@ -140,15 +133,11 @@ window.ComponentManager = {
         }
       }
     }
-
-    console.log("[ComponentManager] 모든 컴포넌트 초기화 완료");
   },
 };
 
 // 이벤트 리스너 등록
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("[ComponentManager] DOMContentLoaded 이벤트 감지");
-
   // 개별 컴포넌트 로드 이벤트 리스너
   document.addEventListener("componentLoaded", function (event) {
     if (!event.detail) {
@@ -164,32 +153,20 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    console.log(`[ComponentManager] 컴포넌트 로드 이벤트 감지: ${component}`);
-
     // 컴포넌트 초기화
     window.ComponentManager.initComponent(component, element);
   });
 
   // 모든 컴포넌트 로드 완료 이벤트 리스너
   document.addEventListener("allComponentsLoaded", function () {
-    console.log("[ComponentManager] 모든 컴포넌트 로드 완료 이벤트 감지");
-
     // 헤더 컴포넌트가 있는 경우 모바일 메뉴만 재초기화
     const drawer = document.querySelector(".mobile-drawer-menu");
     if (drawer) {
-      console.log("[ComponentManager] 헤더 모바일 메뉴 재초기화 시작");
-
       // 여러 단계로 재초기화 시도
       const initAttempts = [100, 300, 500];
 
       initAttempts.forEach((delay, index) => {
         setTimeout(() => {
-          console.log(
-            `[ComponentManager] 모바일 메뉴 재초기화 시도 ${index + 1}/${
-              initAttempts.length
-            }`
-          );
-
           if (typeof window.reInitMobileMenu === "function") {
             window.reInitMobileMenu();
 
@@ -199,16 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const hasSubmenuLinks = document.querySelectorAll(
                   ".mobile-drawer-menu .menu-link.has-submenu"
                 );
-                console.log(
-                  `[ComponentManager] 최종 검증 - 서브메뉴 링크: ${hasSubmenuLinks.length}개`
-                );
 
                 if (hasSubmenuLinks.length === 0) {
                   console.error(
                     "[ComponentManager] ❌ 모바일 메뉴 초기화 실패 - 서브메뉴 링크가 없음"
                   );
                 } else {
-                  console.log("[ComponentManager] ✅ 모바일 메뉴 초기화 완료");
                 }
               }, 100);
             }
@@ -220,39 +193,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }, delay);
       });
     } else {
-      console.log("[ComponentManager] 모바일 드로워를 찾을 수 없음");
     }
 
     // 언어 툴팁 초기화 추가
     const languageSelector = document.querySelector("header .language");
     if (languageSelector) {
-      console.log("[ComponentManager] 언어 툴팁 초기화 시작");
-
       // 다단계 초기화로 안정성 확보
       const languageInitDelays = [200, 500, 800];
 
       languageInitDelays.forEach((delay, index) => {
         setTimeout(() => {
-          console.log(
-            `[ComponentManager] 언어 툴팁 초기화 시도 ${index + 1}/${
-              languageInitDelays.length
-            }`
-          );
-
           // 언어 드롭다운이 아직 초기화되지 않은 경우에만 실행
           if (!window.languageDropdownInitialized) {
             if (typeof setupLanguageDropdown === "function") {
               setupLanguageDropdown();
-              console.log(
-                "[ComponentManager] 언어 툴팁 setupLanguageDropdown 호출"
-              );
             } else {
               console.warn(
                 "[ComponentManager] setupLanguageDropdown 함수를 찾을 수 없음"
               );
             }
           } else {
-            console.log("[ComponentManager] 언어 드롭다운이 이미 초기화됨");
           }
 
           // 마지막 시도에서 검증
@@ -261,28 +221,17 @@ document.addEventListener("DOMContentLoaded", function () {
               const tooltip = document.querySelector(
                 "header .language-tooltip-global"
               );
-              console.log(`[ComponentManager] 언어 툴팁 최종 검증:
-                - 언어 선택기: ${languageSelector ? "✅" : "❌"}
-                - 툴팁 요소: ${tooltip ? "✅" : "❌"}
-                - 초기화 상태: ${
-                  window.languageDropdownInitialized ? "✅" : "❌"
-                }`);
             }, 100);
           }
         }, delay);
       });
     } else {
-      console.log("[ComponentManager] 언어 선택기를 찾을 수 없음");
     }
 
     // 탭 컴포넌트가 있는 경우 강제 초기화 (개선된 로직)
     if (document.getElementById("tab-container")) {
-      console.log("[ComponentManager] 탭 컴포넌트 강제 초기화 시작");
-
       // 탭 초기화 함수
       const initializeTabs = () => {
-        console.log("[ComponentManager] 탭 초기화 실행");
-
         const currentPath = window.location.pathname;
         let config = null;
 
@@ -433,10 +382,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 탭 컴포넌트 생성
         if (config && typeof window.createTabComponent === "function") {
-          console.log("[ComponentManager] 탭 컴포넌트 생성:", config);
           try {
             window.createTabComponent("tab-container", config);
-            console.log("[ComponentManager] 탭 컴포넌트 생성 성공");
+
             return true;
           } catch (error) {
             console.error("[ComponentManager] 탭 컴포넌트 생성 실패:", error);
@@ -457,12 +405,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const tryInitialize = () => {
         attempts++;
-        console.log(
-          `[ComponentManager] 탭 초기화 시도 ${attempts}/${maxAttempts}`
-        );
 
         if (initializeTabs()) {
-          console.log("[ComponentManager] 탭 초기화 성공");
           return;
         }
 
@@ -482,4 +426,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 초기화 완료 로그
-console.log("[ComponentManager] 초기화 완료, 컴포넌트 로드 이벤트 대기 중");

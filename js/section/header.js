@@ -2,7 +2,6 @@
 function initHeaderComponent() {
   // 480px 이하에서는 FAB 기능을 완전히 제거
   if (window.innerWidth <= 480) {
-    console.log("[FAB] FAB 기능 비활성화 - 모바일 화면 (480px 이하)");
   } else {
     // FAB 버튼 스크롤 동작 (480px 초과 화면에서만 동작)
     const fabBtn = document.querySelector(".fab-btn");
@@ -42,14 +41,12 @@ function initHeaderComponent() {
 
               // 10px 이상 움직였으면 클릭으로 인정하지 않음
               if (moveDistance > 10) {
-                console.log("[FAB] 터치 드래그 감지, 스크롤 취소");
                 return;
               }
 
               // 터치 시간이 500ms 이상이면 길게 누른 것으로 간주
               const touchDuration = Date.now() - touchStartData.startTime;
               if (touchDuration > 500) {
-                console.log("[FAB] 긴 터치 감지, 스크롤 취소");
                 return;
               }
             }
@@ -61,7 +58,6 @@ function initHeaderComponent() {
           top: 0,
           behavior: "smooth",
         });
-        console.log("[FAB] top으로 스크롤 실행");
       };
 
       // 터치 시작 데이터 저장
@@ -90,10 +86,7 @@ function initHeaderComponent() {
       } else {
         fabBtn.style.display = "none";
       }
-
-      console.log("[FAB] FAB 버튼 이벤트 리스너 등록 완료 (중복 방지)");
     } else {
-      console.log("[FAB] FAB button not found");
     }
   }
 
@@ -136,11 +129,8 @@ function setupFabResizeHandler() {
         fabBtn.removeEventListener("click", window.fabClickHandler);
         fabBtn.removeEventListener("touchend", window.fabClickHandler);
       }
-
-      console.log("[FAB] FAB 기능 비활성화됨 - 모바일 화면");
     } else {
       // 480px 초과: FAB 기능 활성화
-      console.log("[FAB] FAB 기능 활성화됨 - 데스크톱 화면");
 
       // 이벤트 리스너가 없으면 다시 등록
       if (!window.fabScrollHandler || !window.fabClickHandler) {
@@ -224,11 +214,8 @@ function setActiveMenuByCurrentPage() {
 
 // 언어 선택 드롭다운 설정 (새로운 드롭다운 메뉴)
 function setupLanguageDropdown() {
-  console.log("[LanguageDropdown] language dropdown initialization started");
-
   // 이벤트 델리게이션 방식으로 변경 (페이지 전환에 안전)
   if (window.languageDropdownInitialized) {
-    console.log("[LanguageDropdown] language dropdown already initialized");
     return;
   }
 
@@ -242,21 +229,18 @@ function setupLanguageDropdown() {
 
     if (languageSelector && dropdown) {
       event.stopPropagation();
-      console.log("[LanguageDropdown] language icon clicked");
 
       const isDropdownVisible = dropdown.classList.contains("show-dropdown");
 
       // 토글
       if (isDropdownVisible) {
         dropdown.classList.remove("show-dropdown");
-        console.log("[LanguageDropdown] dropdown hidden");
         if (window.languageDropdownTimer) {
           clearTimeout(window.languageDropdownTimer);
           window.languageDropdownTimer = null;
         }
       } else {
         dropdown.classList.add("show-dropdown");
-        console.log("[LanguageDropdown] dropdown shown");
         if (window.languageDropdownTimer) {
           clearTimeout(window.languageDropdownTimer);
           window.languageDropdownTimer = null;
@@ -276,7 +260,6 @@ function setupLanguageDropdown() {
       const languageArea = document.querySelector("header .language");
       if (!languageArea || !languageArea.contains(event.target)) {
         dropdownForOutsideClick.classList.remove("show-dropdown");
-        console.log("[LanguageDropdown] dropdown closed by outside click");
         if (window.languageDropdownTimer) {
           clearTimeout(window.languageDropdownTimer);
           window.languageDropdownTimer = null;
@@ -287,7 +270,6 @@ function setupLanguageDropdown() {
 
   // 초기화 완료 표시
   window.languageDropdownInitialized = true;
-  console.log("[LanguageDropdown] language dropdown initialization completed");
 }
 
 // 모바일 메뉴 설정 (중복 제거 및 최적화)
@@ -299,13 +281,6 @@ function setupMobileMenu() {
   const drawerMenu = document.querySelector(".mobile-drawer-menu");
 
   if (!menuBtn || !drawer || !overlay || !closeBtn || !drawerMenu) {
-    console.log("[MobileMenu] mobile menu elements not found:", {
-      menuBtn: !!menuBtn,
-      drawer: !!drawer,
-      overlay: !!overlay,
-      closeBtn: !!closeBtn,
-      drawerMenu: !!drawerMenu,
-    });
     return;
   }
 
@@ -344,8 +319,6 @@ function setupMobileMenu() {
 
     parent.replaceChild(newLink, link);
   });
-
-  console.log("[MobileMenu] mobile menu setup started - new approach");
 
   // 드로워 열기/닫기
   function openDrawer() {
@@ -475,16 +448,8 @@ function setupMobileMenu() {
   const menuLinks = document.querySelectorAll(
     ".mobile-drawer-menu .menu-link.has-submenu"
   );
-  console.log(`[MobileMenu] found submenu links: ${menuLinks.length}`);
 
   menuLinks.forEach((link, index) => {
-    console.log(
-      `[MobileMenu] submenu link ${
-        index + 1
-      }: ${link.textContent.trim()}, data-target: ${link.getAttribute(
-        "data-target"
-      )}`
-    );
     link.addEventListener("click", toggleSubmenu);
   });
 
@@ -519,33 +484,22 @@ function setupMobileMenu() {
 
   // 초기화 완료 표시
   drawer.dataset.mobileMenuInitialized = "true";
-  console.log("[MobileMenu] mobile menu setup completed");
 }
 
 // 초기화 방식 (로딩 상태에 따라)
 function initHeaderSafely() {
-  console.log(
-    "[Header] header initialization started, DOM state:",
-    document.readyState
-  );
-
   // DOM이 완전히 로드될 때까지 기다림
   if (document.readyState === "loading") {
-    console.log("[Header] DOM loading, waiting for DOMContentLoaded event");
     document.addEventListener("DOMContentLoaded", () => {
-      console.log("[Header] DOMContentLoaded event triggered");
       setTimeout(initHeaderComponent, 100);
     });
   } else {
-    console.log("[Header] DOM already loaded, immediate initialization");
     setTimeout(initHeaderComponent, 100);
   }
 }
 
 // include.js가 완료된 후에도 호출되도록
 window.addEventListener("load", () => {
-  console.log("[Header] window load event triggered, header reinitialization");
-
   // 완전한 페이지 로드 후 모바일 메뉴 강제 재초기화
   setTimeout(() => {
     const drawer = document.querySelector(".mobile-drawer");
@@ -553,30 +507,16 @@ window.addEventListener("load", () => {
       ".mobile-drawer-menu .menu-link.has-submenu"
     );
 
-    console.log(`[Header] window load check:
-      - drawer: ${drawer ? "✅" : "❌"}
-      - submenu links: ${hasSubmenuLinks.length} links`);
-
     if (drawer && hasSubmenuLinks.length > 0) {
       // 초기화 플래그 리셋
       drawer.dataset.mobileMenuInitialized = "false";
       delete drawer.dataset.mobileMenuHandlers;
-
-      console.log(
-        "[Header] mobile menu reinitialization started from window load"
-      );
 
       // 확실한 재초기화를 위해 여러 단계로 시도
       const delays = [100, 300, 600];
 
       delays.forEach((delay, index) => {
         setTimeout(() => {
-          console.log(
-            `[Header] reinitialization step ${index + 1}/${
-              delays.length
-            } (${delay}ms delay)`
-          );
-
           if (typeof window.reInitMobileMenu === "function") {
             window.reInitMobileMenu();
           }
@@ -589,25 +529,14 @@ window.addEventListener("load", () => {
               );
               const firstSubmenu = finalCheck[0];
 
-              console.log(`[Header] final verification:
-                - submenu links: ${finalCheck.length}
-                - first link: ${
-                  firstSubmenu ? firstSubmenu.textContent.trim() : "none"
-                }
-                - initialization state: ${
-                  drawer.dataset.mobileMenuInitialized
-                }`);
-
               // 실제 클릭 테스트
               if (firstSubmenu) {
-                console.log("[Header] actual click event test ready");
               }
             }, 200);
           }
         }, delay);
       });
     } else {
-      console.warn("[Header] window load: mobile menu elements not found");
     }
   }, 500);
 });
@@ -620,11 +549,8 @@ window.reInitHeaderComponent = initHeaderComponent;
 
 // 모바일 메뉴 강제 재초기화 함수 (include.js 완료 후 사용)
 window.reInitMobileMenu = function () {
-  console.log("[Header] mobile menu forced reinitialization started");
-
   const drawer = document.querySelector(".mobile-drawer");
   if (!drawer) {
-    console.log("[Header] mobile drawer not found, retrying...");
     setTimeout(window.reInitMobileMenu, 100);
     return;
   }
@@ -646,36 +572,22 @@ window.reInitMobileMenu = function () {
   );
   const allLinks = document.querySelectorAll(".mobile-drawer-menu .menu-link");
 
-  console.log(`[Header] element state check:
-    - drawer: ${drawer ? "✅" : "❌"}
-    - submenu links: ${menuLinks.length}
-    - total links: ${allLinks.length}
-    - default buttons: ${allElements.length}`);
-
   if (menuLinks.length === 0) {
-    console.log("[Header] no submenu links found, retrying...");
     setTimeout(window.reInitMobileMenu, 100);
     return;
   }
 
   // 약간의 지연 후 setupMobileMenu 호출
   setTimeout(() => {
-    console.log("[Header] setupMobileMenu re-execution");
     setupMobileMenu();
 
     // 초기화 검증
     const newMenuLinks = document.querySelectorAll(
       ".mobile-drawer-menu .menu-link.has-submenu"
     );
-    console.log(
-      `[Header] reinitialization complete - submenu links: ${newMenuLinks.length}`
-    );
 
     // 테스트용: 첫 번째 서브메뉴 링크 클릭 테스트
     if (newMenuLinks.length > 0) {
-      console.log(
-        `[Header] first submenu test: ${newMenuLinks[0].textContent.trim()}`
-      );
     }
   }, 100);
 };

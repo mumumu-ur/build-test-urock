@@ -36,7 +36,6 @@ function normalizeIncludePath(path) {
   // 중복 슬래시 제거
   normalizedPath = normalizedPath.replace(/\/+/g, "/");
 
-  console.log(`[Include] 경로 정규화: ${path} → ${normalizedPath}`);
   return normalizedPath;
 }
 
@@ -58,10 +57,6 @@ function convertAbsolutePathsToRelative(html, includePath) {
 
   // 상대 경로 prefix 생성
   const relativePrefix = depth > 0 ? "../".repeat(depth) : "./";
-
-  console.log(
-    `[Include] 현재 경로: ${currentPath}, 깊이: ${depth}, prefix: ${relativePrefix}`
-  );
 
   // 절대 경로를 상대 경로로 변환
   let processedHtml = html;
@@ -115,22 +110,17 @@ window.addEventListener("load", function () {
   });
 
   function triggerAllComponentsLoaded() {
-    console.log("[Include] 모든 컴포넌트 로드 완료");
     document.dispatchEvent(new CustomEvent("allComponentsLoaded"));
   }
 
   function checkAllComponentsLoaded() {
     loadedComponents++;
-    console.log(
-      `[Include] 컴포넌트 로드 상태: ${loadedComponents}/${totalComponents}`
-    );
     if (loadedComponents >= totalComponents) {
       triggerAllComponentsLoaded();
     }
   }
 
   async function loadComponent(el, path) {
-    console.log(`[Include] 요소 로드 시작: ${path}`);
     try {
       // 경로 정규화
       const normalizedPath = normalizeIncludePath(path);
@@ -140,7 +130,6 @@ window.addEventListener("load", function () {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       let html = await response.text();
-      console.log(`[Include] 파일 로드 완료: ${normalizedPath}`);
 
       // 절대 경로를 상대 경로로 변환
       html = convertAbsolutePathsToRelative(html, path);
@@ -169,10 +158,6 @@ window.addEventListener("load", function () {
           Object.entries(originalDataAttrs).forEach(([key, value]) => {
             txtGroup.setAttribute(key, value);
           });
-          console.log(
-            `[Include] intro 데이터 속성 전달 완료:`,
-            originalDataAttrs
-          );
         }
       }
 
@@ -188,7 +173,6 @@ window.addEventListener("load", function () {
 
       checkAllComponentsLoaded();
     } catch (error) {
-      console.error(`[Include] 파일 로드 실패: ${path}`, error);
       el.innerHTML = `<!-- Failed to load ${path}: ${error.message} -->`;
       checkAllComponentsLoaded(); // 실패해도 카운트는 증가시켜서 무한 대기 방지
     }

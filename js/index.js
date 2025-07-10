@@ -5,9 +5,6 @@
 
 import "../css/style.css";
 
-/* ========== 00. HTML Include 시스템 ========== */
-import "./include.js"; /* HTML 컴포넌트 동적 삽입 */
-
 /* ========== 01. 글로벌 설정 ========== */
 import "./global/events.js"; /* 이벤트 관련 */
 import "./global/components.js"; /* 공통 컴포넌트 */
