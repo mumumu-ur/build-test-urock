@@ -87,5 +87,9 @@
     "dfas": "Digital Forensics Solution",
     "gm": "Smart Device Illegal<br>Recording Detection Solution",
     "mcq": "Smart Device Data<br>Complete Deletion Solution"
+  },
+  "company": {
+    "title": "Company Introduction",
+    "description": "Creating new value through the harmony of people and technology"
   }
 }
