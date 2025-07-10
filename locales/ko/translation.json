@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Urock",
+    "description": "디지털포렌식 기반의 글로벌 ICT 기업"
+  },
+  "navigation": {
+    "company": "회사소개",
+    "solution": "솔루션소개",
+    "service": "서비스",
+    "support": "고객지원",
+    "menu": "메뉴"
+  },
+  "hero": {
+    "title1": "디지털포렌식 기반의",
+    "topic1": "글로벌 ICT 기업",
+    "description1": "지속적인 디지털포렌식 솔루션 연구 개발",
+    "title2": "디지털포렌식 솔루션",
+    "topic2": "DFAS Series",
+    "title3": "스마트기기 불법 촬영 탐지 솔루션",
+    "topic3": "GateManager Series",
+    "title4": "스마트 기기 데이터 완전삭제 솔루션",
+    "topic4": "M-SecuManager Series"
+  },
+  "thumbnail": {
+    "urock": "디지털포렌식 기반의<br>글로벌 ICT 기업",
+    "dfas": "디지털포렌식 솔루션",
+    "gm": "스마트기기 불법 촬영<br>탐지 솔루션",
+    "mcq": "스마트기기 데이터<br>완전삭제 솔루션"
+  },
+  "solutions": {
+    "dfas": {
+      "title": "DFAS",
+      "pro": "DFAS Pro",
+      "enterprise": "DFAS Enterprise"
+    },
+    "mcq": {
+      "title": "MCQ",
+      "p": "M-SecuManager P",
+      "s": "M-SecuManager S",
+      "g": "M-SecuManager G"
+    },
+    "gatemanager": {
+      "title": "GateManager",
+      "pro": "GateManager Pro"
+    }
+  },
+  "services": {
+    "analysis": "포렌식 분석 서비스",
+    "authentication": "국제 표준화 인증",
+    "education": "포렌식 교육"
+  },
+  "support": {
+    "inquiry": "문의하기",
+    "news": "유락소식"
+  },
+  "language": {
+    "korean": "한국어",
+    "english": "English"
+  },
+  "common": {
+    "top": "맨 위로",
+    "close": "닫기"
+  },
+  "main": {
+    "title": "유락의 디지털포렌식 솔루션",
+    "service": "서비스",
+    "client": "고객사",
+    "news": "유락소식",
+    "news.desc": "디지털포렌식 기업 '유락', '스케일업 팁스' 최종 선정",
+    "news.company": "회사소식",
+    "news.exhibition": "전시회",
+    "news.card1": "네이버 클라우드 포함 12개 기업과 '중동 진출을 위한 상호 협력 협약서'체결",
+    "news.card2": "안심삭제 서비스 오픈",
+    "news.card3": "사우디아라비아 전시회 2025 LEAP 참가",
+    "solution": {
+      "dfas": "DFAS Series",
+      "gatemanager": "GateManager Series",
+      "mcq": "M-SecuManager Series",
+      "dfas.desc1": "현장용 디지털포렌식 솔루션",
+      "dfas.desc2": "원격지 디지털포렌식 솔루션",
+      "gatemanager.desc1": "스마트기기 불법 촬영 탐지 솔루션",
+      "gatemanager.desc2": "중앙 관리형 스마트기기 불법 촬영 탐지 솔루션",
+      "mcq.desc1": "휴대형 스마트기기 데이터 완전삭제 솔루션",
+      "mcq.desc2": "서비스형 스마트기기 데이터 완전삭제 솔루션",
+      "mcq.desc3": "키오스크형 스마트기기 데이터 완전삭제 솔루션"
+    },
+    "service.analysis.desc": "노하우를 바탕으로 차별화된 최종 보고서 제공",
+    "service.authentication.desc": "자격증 및 맞춤형 교육 서비스 제공",
+    "service.education.desc": "기업 환경에 맞는 정보 감사, 침해사고 진단 및 대응 컨설팅"
+  }
+}

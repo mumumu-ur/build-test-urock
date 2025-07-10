@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Urock",
+    "description": "Global ICT Company based on Digital Forensics"
+  },
+  "navigation": {
+    "company": "Company",
+    "solution": "Solutions",
+    "service": "Services",
+    "support": "Support",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title1": "Global ICT Company",
+    "topic1": "based on Digital Forensics",
+    "description1": "Continuous research and development of digital forensics solutions",
+    "title2": "Digital Forensics Solution",
+    "topic2": "DFAS Series",
+    "title3": "Smart Device Illegal Recording Detection Solution",
+    "topic3": "GateManager Series",
+    "title4": "Smart Device Data Complete Deletion Solution",
+    "topic4": "M-SecuManager Series"
+  },
+  "solutions": {
+    "dfas": {
+      "title": "DFAS",
+      "pro": "DFAS Pro",
+      "enterprise": "DFAS Enterprise"
+    },
+    "mcq": {
+      "title": "MCQ",
+      "p": "M-SecuManager P",
+      "s": "M-SecuManager S",
+      "g": "M-SecuManager G"
+    },
+    "gatemanager": {
+      "title": "GateManager",
+      "pro": "GateManager Pro"
+    }
+  },
+  "services": {
+    "analysis": "Forensic Analysis Service",
+    "authentication": "International Standardization Certification",
+    "education": "Forensic Education"
+  },
+  "support": {
+    "inquiry": "Contact Us",
+    "news": "Urock News"
+  },
+  "language": {
+    "korean": "한국어",
+    "english": "English"
+  },
+  "common": {
+    "top": "Go to Top",
+    "close": "Close"
+  },
+  "main": {
+    "title": "Digital Forensics-based Global ICT Company",
+    "service": "Services",
+    "client": "Clients",
+    "news": "Urock News",
+    "news.desc": "Digital forensics company 'Urock', selected for 'Scale-up TIPS' program",
+    "news.company": "Company News",
+    "news.exhibition": "Exhibition",
+    "news.card1": "Signed a mutual cooperation agreement for Middle East expansion with 12 companies including Naver Cloud",
+    "news.card2": "Safe Deletion Service Launched",
+    "news.card3": "Participated in Saudi Arabia Exhibition 2025 LEAP",
+    "solution": {
+      "dfas": "DFAS Series",
+      "gatemanager": "GateManager Series",
+      "mcq": "M-SecuManager Series",
+      "dfas.desc1": "On-site digital forensics solution",
+      "dfas.desc2": "Remote digital forensics solution",
+      "gatemanager.desc1": "Smart device illegal recording detection solution",
+      "gatemanager.desc2": "Centralized smart device illegal recording detection solution",
+      "mcq.desc1": "Portable smart device data complete deletion solution",
+      "mcq.desc2": "Service-type smart device data complete deletion solution",
+      "mcq.desc3": "Kiosk-type smart device data complete deletion solution"
+    },
+    "service.analysis.desc": "Differentiated final report based on know-how",
+    "service.authentication.desc": "Certification and customized education service provided",
+    "service.education.desc": "Information audit and incident response consulting tailored to corporate environment"
+  },
+  "thumbnail": {
+    "urock": "Digital Forensics-based<br>Global ICT Company",
+    "dfas": "Digital Forensics Solution",
+    "gm": "Smart Device Illegal<br>Recording Detection Solution",
+    "mcq": "Smart Device Data<br>Complete Deletion Solution"
+  }
+}

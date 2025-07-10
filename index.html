@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="/css/style.css" />
 
   <title>Urock</title>
+  <meta name="description" content="Urock 홈페이지">
+
 </head>
 
 <body>
@@ -18,10 +20,14 @@
           <img class="logo-icon" alt="" src="logo/urock-white.svg">
         </a>
         <ul class="menu">
-          <li class="menu-item" data-page="company"><a href="html/page/company.html">회사소개</a></li>
-          <li class="menu-item" data-page="solution"><a href="html/page/solution-01-dfas-pro.html">솔루션소개</a></li>
-          <li class="menu-item" data-page="service"><a href="html/page/service-01-analysis.html">서비스</a></li>
-          <li class="menu-item" data-page="support"><a href="html/page/support-01-inquiry.html">고객지원</a></li>
+          <li class="menu-item" data-page="company"><a href="html/page/company.html" data-i18n="navigation.company"></a>
+          </li>
+          <li class="menu-item" data-page="solution"><a href="html/page/solution-01-dfas-pro.html"
+              data-i18n="navigation.solution"></a></li>
+          <li class="menu-item" data-page="service"><a href="html/page/service-01-analysis.html"
+              data-i18n="navigation.service"></a></li>
+          <li class="menu-item" data-page="support"><a href="html/page/support-01-inquiry.html"
+              data-i18n="navigation.support"></a></li>
         </ul>
         <div class="header-actions">
           <div class="language">
@@ -45,13 +51,10 @@
     <div class="language-dropdown-global">
       <div class="language-dropdown">
         <div class="language-option" data-lang="ko" data-url="index.html">
-          <span>한국어</span>
+          <span data-i18n="language.korean"></span>
         </div>
-        <!-- 영문 경로 -->
-        <div class="language-option" data-lang="en"
-          data-url="https://storage.googleapis.com/urock_homepage_bucket/index.html">
-          <!-- <div class="language-option" data-lang="en" data-url="https://urock.kr/en/"> -->
-          <span>English</span>
+        <div class="language-option" data-lang="en" data-url="en/index.html">
+          <span data-i18n="language.english"></span>
         </div>
       </div>
     </div>
@@ -67,24 +70,26 @@
     <!-- 드로워 -->
     <div class="mobile-drawer" id="drawer">
       <div class="mobile-drawer-header">
-        <div class="mobile-drawer-title">메뉴</div>
+        <div class="mobile-drawer-title" data-i18n="navigation.menu"></div>
         <button class="mobile-drawer-close" id="closeBtn"></button>
       </div>
       <ul class="mobile-drawer-menu">
         <li class="menu-item">
-          <a href="html/page/company.html" class="menu-link">회사소개</a>
+          <a href="html/page/company.html" class="menu-link" data-i18n="navigation.company"></a>
         </li>
         <li class="menu-item">
-          <a href="#" class="menu-link has-submenu" data-target="solution">솔루션소개</a>
+          <a href="#" class="menu-link has-submenu" data-target="solution" data-i18n="navigation.solution"></a>
           <ul class="submenu" id="solution">
             <li class="menu-item">
               <a href="#" class="menu-link has-submenu" data-target="dfas">DFAS</a>
               <ul class="submenu" id="dfas">
                 <li class="menu-item">
-                  <a href="html/page/solution-01-dfas-pro.html" class="menu-link">DFAS Pro</a>
+                  <a href="html/page/solution-01-dfas-pro.html" class="menu-link" data-i18n="solutions.dfas.pro"></a>
                 </li>
                 <li class="menu-item">
-                  <a href="html/page/solution-02-dfas-ent.html" class="menu-link">DFAS Enterprise</a>
+                  <a href="html/page/solution-02-dfas-ent.html" class="menu-link"
+                    data-i18n="solutions.dfas.enterprise"></a>
+
                 </li>
               </ul>
             </li>
@@ -92,13 +97,13 @@
               <a href="#" class="menu-link has-submenu" data-target="mcq">MCQ</a>
               <ul class="submenu" id="mcq">
                 <li class="menu-item">
-                  <a href="html/page/solution-03-mcq-p.html" class="menu-link">M-SecuManager P</a>
+                  <a href="html/page/solution-03-mcq-p.html" class="menu-link" data-i18n="solutions.mcq.p"></a>
                 </li>
                 <li class="menu-item">
-                  <a href="html/page/solution-04-mcq-s.html" class="menu-link">M-SecuManager S</a>
+                  <a href="html/page/solution-04-mcq-s.html" class="menu-link" data-i18n="solutions.mcq.s"></a>
                 </li>
                 <li class="menu-item">
-                  <a href="html/page/solution-05-mcq-g.html" class="menu-link">M-SecuManager G</a>
+                  <a href="html/page/solution-05-mcq-g.html" class="menu-link" data-i18n="solutions.mcq.g"></a>
                 </li>
               </ul>
             </li>
@@ -106,37 +111,39 @@
               <a href="#" class="menu-link has-submenu" data-target="gatemanager">GateManager</a>
               <ul class="submenu" id="gatemanager">
                 <li class="menu-item">
-                  <a href="html/page/solution-06-gm.html" class="menu-link">GateManager</a>
+                  <a href="html/page/solution-06-gm.html" class="menu-link" data-i18n="solutions.gatemanager.title"></a>
                 </li>
                 <li class="menu-item">
-                  <a href="html/page/solution-07-gm-pro.html" class="menu-link">GateManager Pro</a>
+                  <a href="html/page/solution-07-gm-pro.html" class="menu-link"
+                    data-i18n="solutions.gatemanager.pro"></a>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li class="menu-item">
-          <a href="#" class="menu-link has-submenu" data-target="service">서비스</a>
+          <a href="#" class="menu-link has-submenu" data-target="service" data-i18n="navigation.service"></a>
           <ul class="submenu" id="service">
             <li class="menu-item">
-              <a href="html/page/service-01-analysis.html" class="menu-link">포렌식 분석 서비스</a>
+              <a href="html/page/service-01-analysis.html" class="menu-link" data-i18n="services.analysis"></a>
             </li>
             <li class="menu-item">
-              <a href="html/page/service-02-authentication.html" class="menu-link">국제 표준화 인증</a>
+              <a href="html/page/service-02-authentication.html" class="menu-link"
+                data-i18n="services.authentication"></a>
             </li>
             <li class="menu-item">
-              <a href="html/page/service-03-education.html" class="menu-link">포렌식 교육</a>
+              <a href="html/page/service-03-education.html" class="menu-link" data-i18n="services.education"></a>
             </li>
           </ul>
         </li>
         <li class="menu-item">
-          <a href="#" class="menu-link has-submenu" data-target="support">고객지원</a>
+          <a href="#" class="menu-link has-submenu" data-target="support" data-i18n="navigation.support"></a>
           <ul class="submenu" id="support">
             <li class="menu-item">
-              <a href="html/page/support-01-inquiry.html" class="menu-link">문의하기</a>
+              <a href="html/page/support-01-inquiry.html" class="menu-link" data-i18n="support.inquiry"></a>
             </li>
             <li class="menu-item">
-              <a href="html/page/support-02-news.html" class="menu-link">유락소식</a>
+              <a href="html/page/support-02-news.html" class="menu-link" data-i18n="support.news"></a>
             </li>
           </ul>
         </li>
@@ -153,10 +160,10 @@
             <video src="video/bg-main-01.mp4" autoplay loop muted alt="carousel-1"></video>
             <div class="bg-front"></div>
             <div class="hero-content">
-              <h1 class="title">디지털포렌식 기반의</h1>
-              <h1 class="topic">글로벌 ICT 기업</h1>
+              <h1 class="title" data-i18n="hero.title1"></h1>
+              <h1 class="topic" data-i18n="hero.topic1"></h1>
               <h6 class="hero-des">
-                <div class="tit">지속적인 디지털포렌식 솔루션 연구 개발</div>
+                <div class="tit" data-i18n="hero.description1"></div>
                 <!-- <img class="dot-set" alt="dot-set-image" src=images/main/dot-set.png"> -->
               </h6>
               <div class="shape"></div>
@@ -166,8 +173,8 @@
             <img src="images/main/main-bg-02.png" alt="carousel-2" />
             <div class="bg-front"></div>
             <div class="hero-content">
-              <h1 class="title">디지털포렌식 솔루션</h1>
-              <h1 class="topic"> DFAS Series</h1>
+              <h1 class="title" data-i18n="hero.title2"></h1>
+              <h1 class="topic" data-i18n="hero.topic2"></h1>
               <h6 class="hero-des">
                 <!-- <div class="tit">세부설명 세부설명 세부설명</div> -->
                 <!-- <img class="dot-set" alt="dot-set-image" src=images/main/dot-set.png"> -->
@@ -179,8 +186,8 @@
             <img src="images/main/main-bg-03.png" alt="carousel-3" />
             <div class="bg-front"></div>
             <div class="hero-content">
-              <h1 class="title">스마트기기 불법 촬영 탐지 솔루션</h1>
-              <h1 class="topic"> GateManager Series</h1>
+              <h1 class="title" data-i18n="hero.title3"></h1>
+              <h1 class="topic" data-i18n="hero.topic3"></h1>
               <h6 class="hero-des">
                 <!-- <div class="tit">세부설명 세부설명 세부설명</div> -->
                 <!-- <img class="dot-set" alt="dot-set-image" src=images/main/dot-set.png"> -->
@@ -192,8 +199,8 @@
             <img src="images/main/main-bg-04.png" alt="carousel-4" />
             <div class="bg-front"></div>
             <div class="hero-content">
-              <h1 class="title">스마트 기기 데이터 완전삭제 솔루션</h1>
-              <h1 class="topic"> M-SecuManager Series</h1>
+              <h1 class="title" data-i18n="hero.title4"></h1>
+              <h1 class="topic" data-i18n="hero.topic4"></h1>
               <h6 class="hero-des">
                 <!-- <div class="tit">세부설명 세부설명 세부설명</div> -->
                 <!-- <img class="dot-set" alt="dot-set-image" src=images/main/dot-set.png"> -->
@@ -236,7 +243,7 @@
               <div class="subtit">
                 <img alt="urock-logo" src="logo/urock-white.svg">
               </div>
-              <h6 class="tit"> 디지털포렌식 기반의 <br>글로벌 ICT 기업 </h6>
+              <h6 class="tit" data-i18n="thumbnail.urock"></h6>
               <img class="icon-expansion" alt="icon-expansion" src="icons/icon-expansion.svg">
             </div>
             <!-- thumbnail 02 -->
@@ -245,7 +252,7 @@
               <div class="subtit">
                 <img alt="dfas-logo" src="logo/dfas-white.svg">
               </div>
-              <h6 class="tit"> 디지털포렌식 솔루션 </h6>
+              <h6 class="tit" data-i18n="thumbnail.dfas"></h6>
               <img class="icon-expansion" alt="icon-expansion" src="icons/icon-expansion.svg">
             </div>
             <!-- thumbnail 03 -->
@@ -254,7 +261,7 @@
               <div class="subtit">
                 <img alt="gm-logo" src="logo/gm-white.svg">
               </div>
-              <h6 class="tit"> 스마트기기 불법 촬영<br> 탐지 솔루션 </h6>
+              <h6 class="tit" data-i18n="thumbnail.gm"></h6>
               <img class="icon-expansion" alt="icon-expansion" src="icons/icon-expansion.svg">
             </div>
             <!-- thumbnail 04 -->
@@ -263,7 +270,7 @@
               <div class="subtit">
                 <img alt="mcq-logo" src="logo/mcq-white.svg">
               </div>
-              <h6 class="tit"> 스마트기기 데이터<br> 완전삭제 솔루션 </h6>
+              <h6 class="tit" data-i18n="thumbnail.mcq"></h6>
               <img class="icon-expansion" alt="icon-expansion" src="icons/icon-expansion.svg">
             </div>
           </div>
@@ -296,7 +303,7 @@
   <div class="solution-container">
     <!-- solution header -->
     <section class="solution-header">
-      <h3 class="head-tit">유락의 디지털포렌식 솔루션</h3>
+      <h3 class="head-tit" data-i18n="main.title"></h3>
     </section>
     <!-- solution body -->
     <section class="section-cards" style="background-image: url('images/main/section-cards.png');">
@@ -304,7 +311,7 @@
       <div class="cards-container">
         <div class="title-component">
           <div class="tit-container">
-            <h3 class="tit">DFAS Series</h3>
+            <h3 class="tit" data-i18n="main.solution.dfas"></h3>
             <div class="dot">
               <div class="dot-child"></div>
             </div>
@@ -319,10 +326,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">DFAS Pro</h4>
-              <h6 class="des">
-                <span class="text-color-blue">현장용</span> 디지털포렌식 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.dfas.pro"></h4>
+              <h6 class="des" data-i18n="main.solution.dfas.desc1"></h6>
             </div>
           </a>
           <a href="html/page/solution-02-dfas-ent.html" class="card card-main-solution"
@@ -333,10 +338,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">DFAS Enterprise</h4>
-              <h6 class="des">
-                <span class="text-color-blue">원격지</span> 디지털포렌식 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.dfas.enterprise"></h4>
+              <h6 class="des" data-i18n="main.solution.dfas.desc2"></h6>
             </div>
           </a>
         </div>
@@ -345,7 +348,7 @@
       <div class="cards-container">
         <div class="title-component">
           <div class="tit-container">
-            <h3 class="tit">GateManager Series</h3>
+            <h3 class="tit" data-i18n="main.solution.gatemanager"></h3>
             <div class="dot">
               <div class="dot-child"></div>
             </div>
@@ -360,8 +363,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">GateManager</h4>
-              <h6 class="des">스마트기기 불법 촬영 탐지 솔루션</h6>
+              <h4 class="product-name" data-i18n="solutions.gatemanager.title"></h4>
+              <h6 class="des" data-i18n="main.solution.gatemanager.desc1"></h6>
             </div>
           </a>
           <a href="html/page/solution-07-gm-pro.html" class="card card-main-solution"
@@ -372,10 +375,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">GateManager Pro</h4>
-              <h6 class="des">
-                중앙 관리형 스마트기기 불법 촬영 탐지 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.gatemanager.pro"></h4>
+              <h6 class="des" data-i18n="main.solution.gatemanager.desc2"></h6>
             </div>
           </a>
         </div>
@@ -384,7 +385,7 @@
       <div class="cards-container">
         <div class="title-component">
           <div class="tit-container">
-            <h3 class="tit">M-SecuManager Series</h3>
+            <h3 class="tit" data-i18n="main.solution.mcq"></h3>
             <div class="dot">
               <div class="dot-child"></div>
             </div>
@@ -399,10 +400,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">M-SecuManager P</h4>
-              <h6 class="des">
-                휴대형 스마트기기 데이터 완전삭제 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.mcq.p"></h4>
+              <h6 class="des" data-i18n="main.solution.mcq.desc1"></h6>
             </div>
           </a>
           <a href="html/page/solution-04-mcq-s.html" class="card card-main-solution"
@@ -413,10 +412,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">M-SecuManager S</h4>
-              <h6 class="des">
-                서비스형 스마트기기 데이터 완전삭제 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.mcq.s"></h4>
+              <h6 class="des" data-i18n="main.solution.mcq.desc2"></h6>
             </div>
           </a>
           <a href="html/page/solution-05-mcq-g.html" class="card card-main-solution"
@@ -427,10 +424,8 @@
               </div>
             </div>
             <div class="card-txt-group">
-              <h4 class="product-name">M-SecuManager G</h4>
-              <h6 class="des">
-                키오스크형 스마트기기 데이터 완전삭제 솔루션
-              </h6>
+              <h4 class="product-name" data-i18n="solutions.mcq.g"></h4>
+              <h6 class="des" data-i18n="main.solution.mcq.desc3"></h6>
             </div>
           </a>
         </div>
@@ -446,7 +441,7 @@
         <div class="cards-container">
           <div class="title-component">
             <div class="tit-container">
-              <h3 class="tit">서비스</h3>
+              <h3 class="tit" data-i18n="main.service"></h3>
               <div class="dot">
                 <div class="dot-child"></div>
               </div>
@@ -461,8 +456,8 @@
                 </div>
               </div>
               <div class="card-txt-group">
-                <h4 class="product-name">디지털포렌식 분석 서비스</h4>
-                <h6 class="des">노하우를 바탕으로 차별화된 최종 보고서 제공</h6>
+                <h4 class="product-name" data-i18n="services.analysis"></h4>
+                <h6 class="des" data-i18n="main.service.analysis.desc"></h6>
               </div>
             </a>
             <a href="html/page/service-02-authentication.html" class="card card-main-service"
@@ -473,8 +468,8 @@
                 </div>
               </div>
               <div class="card-txt-group">
-                <h4 class="product-name">디지털포렌식 교육</h4>
-                <h6 class="des">자격증 및 맞춤형 교육 서비스 제공</h6>
+                <h4 class="product-name" data-i18n="services.authentication"></h4>
+                <h6 class="des" data-i18n="main.service.authentication.desc"></h6>
               </div>
             </a>
             <a href="html/page/service-03-education.html" class="card card-main-service"
@@ -485,9 +480,8 @@
                 </div>
               </div>
               <div class="card-txt-group">
-                <h4 class="product-name">정보보호 컨설팅</h4>
-                <h6 class="des">기업 환경에 맞는 정보 감사<br>
-                  침해사고 진단 및 대응 컨설팅</h6>
+                <h4 class="product-name" data-i18n="services.education"></h4>
+                <h6 class="des" data-i18n="main.service.education.desc"></h6>
               </div>
             </a>
           </div>
@@ -502,7 +496,7 @@
       <!-- <div class="inner"> -->
       <div class="title-component">
         <div class="tit-container">
-          <h3 class="tit">고객사</h3>
+          <h3 class="tit" data-i18n="main.client"></h3>
           <div class="dot">
             <div class="dot-child"></div>
           </div>
@@ -540,12 +534,12 @@
         <div class="cards-container">
           <div class="title-component">
             <div class="tit-container">
-              <h3 class="tit">유락소식</h3>
+              <h3 class="tit" data-i18n="main.news"></h3>
               <div class="dot">
                 <div class="dot-child"></div>
               </div>
             </div>
-            <h6 class="tit-desc">디지털포렌식 기업 '유락', '스케일업 팁스' 최종 선정</h6>
+            <h6 class="tit-desc" data-i18n="main.news.desc"></h6>
           </div>
           <div class="cards">
             <a href="html/page/support-02-news.html" class="card card-main-news"
@@ -558,11 +552,11 @@
               <div class="card-txt-group">
                 <div class="top">
                   <div class="subtit">
-                    <h6 class="div">회사소식</h6>
+                    <h6 class="div" data-i18n="main.news.company"></h6>
                   </div>
                   <h6 class="date">2025년 7월</h6>
                 </div>
-                <h4 class="product-name">네이버 클라우드 포함 12개 기업과 '중동 진출을 위한 상호 협력 협약서'체결</h4>
+                <h4 class="product-name" data-i18n="main.news.card1"></h4>
                 <!-- <h6 class="des">본문 내용</h6> -->
               </div>
             </a>
@@ -576,11 +570,11 @@
               <div class="card-txt-group">
                 <div class="top">
                   <div class="subtit">
-                    <h6 class="div">회사소식</h6>
+                    <h6 class="div" data-i18n="main.news.company"></h6>
                   </div>
                   <h6 class="date">2025년 6월</h6>
                 </div>
-                <h4 class="product-name">안심삭제 서비스 오픈</h4>
+                <h4 class="product-name" data-i18n="main.news.card2"></h4>
                 <!-- <h6 class="des">본문 내용</h6> -->
               </div>
             </a>
@@ -594,11 +588,11 @@
               <div class="card-txt-group">
                 <div class="top">
                   <div class="subtit">
-                    <h6 class="div">전시회</h6>
+                    <h6 class="div" data-i18n="main.news.exhibition"></h6>
                   </div>
                   <h6 class="date">2025년 2월</h6>
                 </div>
-                <h4 class="product-name">사우디아라비아 전시회 2025 LEAP 참가</h4>
+                <h4 class="product-name" data-i18n="main.news.card3"></h4>
                 <!-- <h6 class="des">본문 내용</h6> -->
               </div>
             </a>
@@ -609,7 +603,7 @@
           </div>
           <div class="btn-main-news-container">
             <a href="html/page/support-01-inquiry.html" class="btn-main-news">
-              <span class="button">문의하기</span>
+              <span class="button" data-i18n="support.inquiry"></span>
               <img class="icon-arrow" alt="" src="icons/icon-arrow-white.svg" />
             </a>
           </div>
@@ -657,41 +651,41 @@
           </div>
           <div class="menu-container">
             <div class="menu-group">
-              <div class="menu-tit">회사소개</div>
+              <div class="menu-tit" data-i18n="navigation.company"></div>
               <div class="divider-row-menu"></div>
               <ul>
-                <a class="li" href="html/page/company.html">회사소개</a>
+                <a class="li" href="html/page/company.html" data-i18n="navigation.company"></a>
                 <!-- <a class="li" href="javascript:void(0)">회사소식</a> -->
               </ul>
             </div>
             <div class="menu-group">
-              <a class="menu-tit">솔루션</a>
+              <a class="menu-tit" data-i18n="navigation.solution"></a>
               <img class="divider-row-menu" alt="" src="images/footer/divider-row-menu.png">
               <ul>
-                <a class="li" href="html/page/solution-01-dfas-pro.html">DFAS Pro</a>
-                <a class="li" href="html/page/solution-02-dfas-ent.html">DFAS Enterprise</a>
-                <a class="li" href="html/page/solution-03-mcq-p.html">M-SecuManager P</a>
-                <a class="li" href="html/page/solution-04-mcq-s.html">M-SecuManager S</a>
-                <a class="li" href="html/page/solution-05-mcq-g.html">M-SecuManager G</a>
-                <a class="li" href="html/page/solution-06-gm.html">GateManager</a>
-                <a class="li" href="html/page/solution-07-gm-pro.html">GateManager Pro</a>
+                <a class="li" href="html/page/solution-01-dfas-pro.html" data-i18n="solutions.dfas.pro"></a>
+                <a class="li" href="html/page/solution-02-dfas-ent.html" data-i18n="solutions.dfas.enterprise"></a>
+                <a class="li" href="html/page/solution-03-mcq-p.html" data-i18n="solutions.mcq.p"></a>
+                <a class="li" href="html/page/solution-04-mcq-s.html" data-i18n="solutions.mcq.s"></a>
+                <a class="li" href="html/page/solution-05-mcq-g.html" data-i18n="solutions.mcq.g"></a>
+                <a class="li" href="html/page/solution-06-gm.html" data-i18n="solutions.gatemanager.title"></a>
+                <a class="li" href="html/page/solution-07-gm-pro.html" data-i18n="solutions.gatemanager.pro"></a>
               </ul>
             </div>
             <div class="menu-group">
-              <a class="menu-tit">서비스</a>
+              <a class="menu-tit" data-i18n="navigation.service"></a>
               <div class="divider-row-menu"></div>
               <ul>
-                <a class="li" href="html/page/service-01-analysis.html">디지털포렌식 분석 서비스</a>
-                <a class="li" href="html/page/service-02-authentication.html">국제 표준화 인증</a>
-                <a class="li" href="html/page/service-03-education.html">포렌식 교육</a>
+                <a class="li" href="html/page/service-01-analysis.html" data-i18n="services.analysis"></a>
+                <a class="li" href="html/page/service-02-authentication.html" data-i18n="services.authentication"></a>
+                <a class="li" href="html/page/service-03-education.html" data-i18n="services.education"></a>
               </ul>
             </div>
             <div class="menu-group">
-              <a class="menu-tit">고객지원</a>
+              <a class="menu-tit" data-i18n="navigation.support"></a>
               <div class="divider-row-menu"></div>
               <ul>
-                <a class="li" href="html/page/support-01-inquiry.html">문의하기</a>
-                <a class="li" href="html/page/support-02-news.html">유락소식</a>
+                <a class="li" href="html/page/support-01-inquiry.html" data-i18n="support.inquiry"></a>
+                <a class="li" href="html/page/support-02-news.html" data-i18n="support.news"></a>
               </ul>
             </div>
           </div>
@@ -714,7 +708,9 @@
 
     <!-- <div data-include-path="html/section/footer.html"></div> -->
 
+
     <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/global/i18n.js"></script>
 
 </body>
 
