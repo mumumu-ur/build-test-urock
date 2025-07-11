@@ -69,15 +69,15 @@ section.intro .tab-container,
 }
 
 /* 탭 컨테이너 내부 모든 요소들도 전체 너비 보장 */
-html body section.intro .tab-container>*,
-html body .intro .tab-container>*,
-html section.intro .tab-container>*,
-html .intro .tab-container>*,
-body section.intro .tab-container>*,
-body .intro .tab-container>*,
-section.intro .tab-container>*,
-.intro .tab-container>*,
-.tab-container>* {
+html body section.intro .tab-container > *,
+html body .intro .tab-container > *,
+html section.intro .tab-container > *,
+html .intro .tab-container > *,
+body section.intro .tab-container > *,
+body .intro .tab-container > *,
+section.intro .tab-container > *,
+.intro .tab-container > *,
+.tab-container > * {
   width: 100%;
   box-sizing: border-box;
   /* border-bottom: 2px solid #2b293a; */
@@ -106,14 +106,14 @@ section.intro .tab-container .tab-main,
 .tab-main {
   display: flex;
   justify-content: center;
-  width: 556px;
+  width: auto;
   margin-top: 8px;
   padding: 0;
   box-sizing: border-box;
   border-radius: 16px 16px 0 0;
 }
 
-/* 메인 탭 링크 기본 스타일 - 균등한 너비 분배 */
+/* 메인 탭 링크 기본 스타일 - 텍스트 길이에 맞춰 자동 조절 */
 html body section.intro .tab-container .tab-main a,
 html body .intro .tab-container .tab-main a,
 html section.intro .tab-container .tab-main a,
@@ -129,7 +129,7 @@ section.intro .tab-container .tab-main a,
   cursor: pointer;
   text-decoration: none;
   text-align: center;
-  flex: 1;
+  flex: none;
   min-width: 0;
   max-width: none;
   background-color: transparent;
@@ -226,7 +226,7 @@ section.intro .tab-container .tab-sub,
 }
 
 .tab-menu a.active:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -293,7 +293,6 @@ section.intro .tab-container .tab-sub,
 
 /* 태블릿 (768px 이하) */
 @media (max-width: 768px) {
-
   /* 메인 탭 태블릿 */
   .tab-main {
     gap: 0;
@@ -304,7 +303,7 @@ section.intro .tab-container .tab-sub,
   .tab-main a {
     min-width: 120px;
     padding: 14px 20px;
-    flex-shrink: 0;
+    flex: none;
   }
 
   .tab-text {
@@ -350,7 +349,6 @@ section.intro .tab-container .tab-sub,
 
 /* 모바일 (480px 이하) */
 @media (max-width: 480px) {
-
   /* 메인 탭 모바일 - 스크롤 가능 */
   .tab-main {
     justify-content: flex-start;
@@ -409,7 +407,7 @@ section.intro .tab-container .tab-sub,
   .tab-content {
     min-height: 250px;
     padding: 15px 0;
-}
+  }
 
   #selected-tab-content {
     min-height: 220px;
@@ -426,8 +424,6 @@ section.intro .tab-container .tab-sub,
 
 /* 초소형 모바일 (360px 이하) */
 @media (max-width: 360px) {
-
-
   .tab-menu a {
     min-width: 70px;
     padding: 6px 10px;
@@ -464,7 +460,6 @@ section.intro .tab-container .tab-sub,
 
 /* ========== 접근성 및 터치 최적화 ========== */
 @media (hover: none) and (pointer: coarse) {
-
   .tab-main a,
   .tab-menu a {
     min-height: 44px;
@@ -483,9 +478,7 @@ section.intro .tab-container .tab-sub,
 }
 
 /* 고밀도 디스플레이 최적화 */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .tab-main a,
   .tab-menu a {
     -webkit-font-smoothing: antialiased;
