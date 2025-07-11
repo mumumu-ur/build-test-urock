@@ -128,5 +128,9 @@
       "address": "815 Daewangpangyo-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do, 4F Information Protection Cluster 467 · Enterprise Support Hub B102",
       "button": "Inquire About Solutions"
     }
+  },
+  "solution": {
+    "title": "Solutions",
+    "description": "Urock's solutions"
   }
 }
