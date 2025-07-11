@@ -1,6 +1,7 @@
 import i18next from "i18next";
 import ko from "/locales/ko/translation.json";
 import en from "/locales/en/translation.json";
+import DOMPurify from 'dompurify';
 
 function getCurrentLocale() {
   const lang = localStorage.getItem("lang");
@@ -39,8 +40,9 @@ export function t(key) {
 
 function updatePageContent() {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    el.textContent = t(key);
+    const key = el.dataset.i18n;
+    const raw = t(key);
+    el.innerHTML = DOMPurify.sanitize(raw);
   });
 }
 
